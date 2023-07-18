@@ -17,25 +17,16 @@ const Reviews = ({ getMovieData, movie, reviews, setReviews }) => {
     }, [])
 
     const addReview = async (e) => {
-        
         e.preventDefault();
-
         const rev = revText.current;
-
         try {
-
             const response = await api.post("/api/v1/reviews", { reviewBody:rev.value, imdbId:movieId });
-
             const updatedReviews = [...reviews, {body:rev.value}];
-
             rev.value = "";
-
             setReviews(updatedReviews);
 
         } catch (err) {
-
             console.error(err);
-
         }
 
     }
